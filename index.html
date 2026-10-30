@@ -1,510 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Milan Chhabra | Java Developer Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Milan Chhabra – Java Developer building scalable applications, exploring MERN stack and DSA." />
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Milan Chhabra — Full Stack Java Developer focused on AI-powered applications, RAG and MCP.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Milan Chhabra — Full Stack Java Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <canvas id="dust-canvas" aria-hidden="true"></canvas>
 </head>
 <body>
-
-  <!-- Canvas for particle background -->
-  <canvas id="particleCanvas"></canvas>
-
-  <!-- Custom cursor -->
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-
-  <!-- Page loader -->
-  <div class="loader" id="loader">
+  
+  <div class="page-loader" id="pageLoader" aria-label="Loading portfolio">
     <div class="loader-inner">
-      <div class="loader-logo">MC</div>
-      <div class="loader-bar"><div class="loader-fill"></div></div>
+      <span class="loader-name">MILAN CHHABRA</span>
+      <span class="loader-role">FULL STACK JAVA DEVELOPER</span>
+      <div class="loader-progress"><span></span></div>
     </div>
   </div>
 
-  <!-- ===== HEADER ===== -->
-  <header id="mainHeader">
-    <div class="container nav">
-      <div class="nav-left">
-        <div class="logo-circle">M</div>
-        <div class="nav-title">
-          <span>Milan Chhabra</span><br />
-          Java Developer
-        </div>
+  <canvas class="ambient-canvas" id="ambientCanvas" aria-hidden="true"></canvas>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Milan Chhabra home">
+        <span class="brand-mark">M</span><span class="brand-name">MILAN</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about" data-nav="about">About</a>
+        <a href="#stack" data-nav="stack">Stack</a>
+        <a href="#projects" data-nav="projects">Projects</a>
+        <a href="#journey" data-nav="journey">Journey</a>
+        <a href="#contact" data-nav="contact">Contact</a>
       </div>
-      <nav class="nav-links" id="navLinks">
-        <a href="#home" class="nav-link" data-text="Home">Home</a>
-        <a href="#about" class="nav-link" data-text="About">About</a>
-        <a href="#skills" class="nav-link" data-text="Skills">Skills</a>
-        <a href="#projects" class="nav-link" data-text="Projects">Projects</a>
-        <a href="#contact" class="nav-link" data-text="Contact">Contact</a>
-      </nav>
-      <div class="menu-toggle" id="menuToggle">
-        <span></span><span></span><span></span>
-      </div>
+      <a class="nav-cta magnetic" href="#contact"><span>Let's talk</span><span>↗</span></a>
+      <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about">About</a><a href="#stack">Stack</a><a href="#projects">Projects</a>
+      <a href="#journey">Journey</a><a href="#contact">Contact</a>
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
-  <section id="home">
-    <div class="container hero">
-      <div class="hero-content">
-        <div class="hero-tag reveal-up">
-          <div class="hero-tag-dot"></div>
-          Open to opportunities
-        </div>
-        <h1 class="hero-title reveal-up" style="--delay:0.1s">
-          Hi, I'm <span class="gradient-text">Milan Chhabra</span><br />
-          <span class="typed-wrapper"><span id="typedText"></span><span class="typed-cursor">|</span></span>
+  <main>
+    <section class="hero section-shell" id="home">
+      
+      <div class="hero-copy">
+        <div class="hello-badge reveal"><span class="hello-dot"></span>Hello, I'm Milan</div>
+        <h1 class="hero-title">
+          <span class="title-line reveal">I build</span>
+          <span class="title-line reveal delay-1"><em>digital</em> products</span>
+          <span class="title-line reveal delay-2">that work.</span>
         </h1>
-        <p class="hero-subtitle reveal-up" style="--delay:0.2s">
-          Java Developer building scalable, real-world applications with clean architecture.
-          Exploring MERN stack and sharpening DSA — one problem at a time.
-        </p>
-        <div class="hero-cta reveal-up" style="--delay:0.3s">
-          <a href="#projects" class="btn-primary">
-            <span>View Projects</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#contact" class="btn-ghost">Contact Me</a>
-          <a href="https://github.com/Milan376" target="_blank" class="btn-icon" title="GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          </a>
+        <p class="hero-role reveal delay-3">Full Stack Java Developer <span class="role-separator">•</span> AI Engineering</p>
+        <p class="hero-description reveal delay-4">I build practical full-stack applications with Java, Spring Boot, React and AI technologies including Spring AI, LangChain4j, RAG and MCP — with a focus on clean code and real problem solving.</p>
+        <div class="hero-actions reveal delay-4">
+          <a href="#projects" class="button button-primary magnetic"><span>View my work</span><span>↗</span></a>
+          <a href="#about" class="button button-secondary magnetic"><span>About me</span><span>↓</span></a>
         </div>
-        <div class="hero-meta reveal-up" style="--delay:0.4s">
-          <div class="hero-meta-item">
-            <span>Based In</span>
-            Chandigarh, India
-          </div>
-          <div class="hero-meta-item">
-            <span>Education</span>
-            B.E. CSE @ CU '27
-          </div>
-          <div class="hero-meta-item">
-            <span>Focus</span>
-            Java · MERN · DSA
-          </div>
+        <div class="hero-meta reveal delay-5">
+          <div><strong>JAVA</strong><span>CORE + DSA</span></div>
+          <div><strong>SPRING BOOT</strong><span>BACKEND</span></div>
+          <div><strong>REACT</strong><span>FRONTEND</span></div>
+          <div><strong>RAG + MCP</strong><span>AI INTEGRATION</span></div>
         </div>
       </div>
+      <div class="hero-visual">
+        <div class="photo-orbit orbit-a"></div><div class="photo-orbit orbit-b"></div><div class="orange-shape"></div>
+        <div class="photo-frame" data-parallax>
+          <img src="./assets/Confident Businessman Cutout.png" alt="Milan Chhabra" class="profile-photo">
+        </div>
+        <div class="floating-note note-top"><span class="note-symbol">↗</span><span>BUILDING<br>INTELLIGENT SYSTEMS</span></div>
+        <div class="floating-note note-bottom"><span class="note-number">01</span><span>JAVA<br>FULL STACK</span></div>
+        <div class="hand-line line-one"></div><div class="hand-line line-two"></div>
+      </div>
+      <a href="#about" class="scroll-indicator"><span>SCROLL TO EXPLORE</span><span class="scroll-arrow">↓</span></a>
+    </section>
 
-      <div class="hero-profile-wrapper reveal-right">
-        <div class="hero-profile-card">
-          <div class="card-shine"></div>
-          <div class="hero-glow"></div>
-          <div class="profile-avatar">
-            <img src="/portfolio/assets/Screenshot_20250812_222800_Photos.jpg" alt="Milan Chhabra" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'avatar-fallback\'>MC</div>'" />
-          </div>
-          <div class="profile-name">Milan Chhabra</div>
-          <div class="profile-role">Java Developer</div>
-          <div class="profile-tags">
-            <div class="profile-tag">Scalable Apps</div>
-            <div class="profile-tag">MERN Learner</div>
-            <div class="profile-tag">DSA</div>
-          </div>
-          <div class="profile-links">
-            <a href="mailto:chhabramilan25@gmail.com"><span>Email:</span> chhabramilan25@gmail.com</a>
-            <a href="https://github.com/Milan376" target="_blank"><span>GitHub:</span> github.com/Milan376</a>
-            <a href="https://linkedin.com/in/milanchhabra" target="_blank"><span>LinkedIn:</span> linkedin.com/in/milanchhabra</a>
-          </div>
-          <!-- Floating stats -->
-          <div class="float-stat stat-1">
-            <div class="stat-num">3+</div>
-            <div class="stat-label">Projects</div>
-          </div>
-          <div class="float-stat stat-2">
-            <div class="stat-num">7+</div>
-            <div class="stat-label">Technologies</div>
-          </div>
+    <section class="marquee-section" aria-label="Technology list">
+      <div class="marquee-track marquee-forward">
+        <span>JAVA</span><b>✦</b><span>SPRING BOOT</span><b>✦</b><span>REACT</span><b>✦</b><span>DSA</span><b>✦</b><span>MYSQL</span><b>✦</b><span>POSTGRESQL</span><b>✦</b><span>RAG</span><b>✦</b><span>MCP</span><b>✦</b><span>LANGCHAIN4J</span><b>✦</b>
+        <span>JAVA</span><b>✦</b><span>SPRING BOOT</span><b>✦</b><span>REACT</span><b>✦</b><span>DSA</span><b>✦</b><span>MYSQL</span><b>✦</b><span>POSTGRESQL</span><b>✦</b><span>RAG</span><b>✦</b><span>MCP</span><b>✦</b><span>LANGCHAIN4J</span><b>✦</b>
+      </div>
+      <div class="marquee-track marquee-backward">
+        <span>FULL STACK</span><b>✦</b><span>REST APIs</span><b>✦</b><span>GIT</span><b>✦</b><span>GITHUB</span><b>✦</b><span>SPRING AI</span><b>✦</b><span>LLMs</span><b>✦</b><span>WEBSOCKETS</span><b>✦</b><span>SOCKET PROGRAMMING</span><b>✦</b>
+        <span>FULL STACK</span><b>✦</b><span>REST APIs</span><b>✦</b><span>GIT</span><b>✦</b><span>GITHUB</span><b>✦</b><span>SPRING AI</span><b>✦</b><span>LLMs</span><b>✦</b><span>WEBSOCKETS</span><b>✦</b><span>SOCKET PROGRAMMING</span><b>✦</b>
+      </div>
+    </section>
+
+    <section class="section section-shell about-section" id="about">
+      <div class="section-label">01 — ABOUT</div>
+      <div class="section-heading-row">
+        <h2 class="huge-heading">I LIKE BUILDING<br>THINGS AND<br><span>UNDERSTANDING</span><br>HOW THEY WORK.</h2>
+        <div class="section-side-copy"><span class="side-number">/01</span>
+          <p>I'm Milan Chhabra, a Computer Science undergraduate at Chandigarh University focused on Java full-stack development and AI-powered applications.</p>
+          <p>I learn by building — turning ideas into working products, then improving the code, architecture and user experience behind them.</p>
         </div>
       </div>
-    </div>
-    <!-- Scroll indicator -->
-    <div class="scroll-indicator">
-      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
-      <span>Scroll</span>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section id="about">
-    <div class="container">
-      <div class="section-heading reveal-up">
-        <div class="section-label">// about</div>
-        <h2 class="section-title">Who I am &amp; what I aim for</h2>
-        <div class="section-line"></div>
+      <div class="about-process">
+        <div class="process-line"><span></span></div>
+        <div class="process-item active"><small>01</small><strong>FOUNDATIONS</strong><span>Java • OOP • DSA</span></div>
+        <div class="process-item"><small>02</small><strong>BUILDING</strong><span>React • APIs • Spring Boot</span></div>
+        <div class="process-item"><small>03</small><strong>CONNECTING</strong><span>Databases • WebSockets</span></div>
+        <div class="process-item"><small>04</small><strong>AI SYSTEMS</strong><span>Spring AI • RAG • MCP</span></div>
       </div>
-      <div class="about-grid">
-        <div class="card reveal-up" style="--delay:0.1s">
-          <div class="card-accent-top"></div>
-          <h3 class="card-title">Overview</h3>
-          <p class="card-text">
-            I'm a Java Developer passionate about building scalable, efficient systems. My approach is simple — clean code, thoughtful architecture, and a relentless drive to solve real problems.
-          </p>
-          <p class="card-text" style="margin-top:0.8rem">
-            Alongside Java, I'm expanding into the MERN stack and consistently strengthening my DSA foundations. My goal: a high-impact engineering role where I can ship meaningful products and grow into a senior full-stack engineer.
-          </p>
-          <div class="about-badges">
-            <div class="about-badge">☕ Java First</div>
-            <div class="about-badge">⚡ Problem Solver</div>
-            <div class="about-badge">📈 Growth Mindset</div>
-          </div>
-        </div>
+    </section>
 
-        <div class="card reveal-up" style="--delay:0.2s">
-          <div class="card-accent-top"></div>
-          <h3 class="card-title">Education</h3>
-          <p class="card-text">Pursuing B.E. in Computer Science &amp; Engineering with focus on software development and algorithms.</p>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div>
-                <div class="timeline-title">B.E. Computer Science &amp; Engineering</div>
-                <div class="timeline-meta">Chandigarh University · 2023 – 2027</div>
-                <div class="timeline-detail">Java · DSA · DBMS · OS · CN · Web Dev</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot timeline-dot--muted"></div>
-              <div>
-                <div class="timeline-title">Senior Secondary (XII)</div>
-                <div class="timeline-meta">PCM with Computer Science · 2023</div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <section class="section section-shell stack-section" id="stack">
+      <div class="section-label">02 — STACK</div>
+      <div class="stack-intro"><h2 class="huge-heading">WHAT I<br><span>BUILD WITH.</span></h2><p>A practical stack centered on Java backend engineering, modern frontend development, data-driven applications and AI integration.</p></div>
+      <div class="stack-list">
+        <article class="stack-row"><span class="stack-index">01</span><div class="stack-main"><h3>Java</h3><p>Core Java · OOP · Collections · Streams · DSA</p></div><span class="stack-arrow">↗</span></article>
+        <article class="stack-row"><span class="stack-index">02</span><div class="stack-main"><h3>Spring Boot</h3><p>REST APIs · Spring Data JPA · Hibernate · JWT</p></div><span class="stack-arrow">↗</span></article>
+        <article class="stack-row"><span class="stack-index">03</span><div class="stack-main"><h3>React</h3><p>Components · Hooks · State · API Integration</p></div><span class="stack-arrow">↗</span></article>
+        <article class="stack-row"><span class="stack-index">04</span><div class="stack-main"><h3>Databases</h3><p>MySQL · PostgreSQL · SQL · Data Modelling</p></div><span class="stack-arrow">↗</span></article>
+        <article class="stack-row"><span class="stack-index">05</span><div class="stack-main"><h3>AI Integration</h3><p>Spring AI · LangChain4j · LLMs · RAG · MCP</p></div><span class="stack-arrow">↗</span></article>
+        <article class="stack-row"><span class="stack-index">06</span><div class="stack-main"><h3>Tools & Systems</h3><p>Git · GitHub · Postman · WebSockets · TCP Sockets</p></div><span class="stack-arrow">↗</span></article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== SKILLS ===== -->
-  <section id="skills">
-    <div class="container">
-      <div class="section-heading reveal-up">
-        <div class="section-label">// skills</div>
-        <h2 class="section-title">Tools &amp; technologies I work with</h2>
-        <div class="section-line"></div>
+    <section class="projects-section" id="projects">
+      <div class="section-shell projects-heading"><div class="section-label">03 — SELECTED WORK</div><h2 class="huge-heading">THINGS I'VE<br><span>BUILT.</span></h2></div>
+      <div class="project-showcase">
+        <article class="project-panel">
+          <div class="project-copy"><span class="project-number">01 / 04</span><h3>Digital<br><em>Expense</em><br>Tracker</h3>
+            <p>A personal finance application to record, categorize and monitor income and expenses, with authentication, persistent storage and a dashboard visualizing spending trends.</p>
+            <div class="project-tags"><span>JAVA</span><span>SPRING BOOT</span><span>REACT.JS</span><span>MYSQL</span><span>CHARTS</span></div>
+            <div class="project-links"><a href="https://github.com/Milan376" target="_blank" rel="noopener noreferrer" class="text-link">GitHub profile ↗</a></div>
+          </div>
+          <div class="project-media"><div class="media-number">01</div><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=85" alt="Financial tracking workspace" loading="lazy"><div class="media-placeholder"><span>ADD EXPENSE TRACKER<br>SCREENSHOT</span></div></div>
+        </article>
+        <article class="project-panel">
+          <div class="project-copy"><span class="project-number">02 / 04</span><h3>Customer<br><em>Relationship</em><br>Management</h3>
+            <p>A CRM platform for managing customer records, sales leads and follow-ups, with role-based access for Admin, Sales Manager and Sales Executive and a centralized sales pipeline dashboard.</p>
+            <div class="project-tags"><span>JAVA</span><span>SPRING BOOT</span><span>REACT.JS</span><span>JWT</span><span>RBAC</span></div>
+            <div class="project-links"><a href="https://github.com/Milan376" target="_blank" rel="noopener noreferrer" class="text-link">GitHub profile ↗</a></div>
+          </div>
+          <div class="project-media"><div class="media-number">02</div><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=85" alt="Sales and customer analytics dashboard" loading="lazy"><div class="media-placeholder"><span>ADD CRM PROJECT<br>SCREENSHOT</span></div></div>
+        </article>
+        <article class="project-panel">
+          <div class="project-copy"><span class="project-number">03 / 04</span><h3>Real-Time<br><em>Messaging</em><br>Platform</h3>
+            <p>A Java client-server messaging application supporting multiple concurrent users through TCP socket communication, multithreading and thread-safe message handling.</p>
+            <div class="project-tags"><span>JAVA</span><span>SOCKETS</span><span>TCP</span><span>MULTITHREADING</span></div>
+            <div class="project-links"><a href="https://github.com/Milan376" target="_blank" rel="noopener noreferrer" class="text-link">GitHub profile ↗</a></div>
+          </div>
+          <div class="project-media messaging-media"><div class="media-number">03</div><div class="message-window"><div class="message-window-top"><i></i><i></i><i></i><span>LIVE MESSAGING</span></div><div class="message-bubble left">Client connected<span>TCP connection established</span></div><div class="message-bubble right">Message delivered<span>Thread-safe communication</span></div><div class="message-bubble left">Multiple users online<span>Concurrent sessions active</span></div></div></div>
+        </article>
+        <article class="project-panel">
+          <div class="project-copy"><span class="project-number">04 / 04</span><h3>LLM-Powered<br><em>Conversational</em><br>Assistant</h3>
+            <p>An AI assistant that generates contextual reply suggestions from prompts, integrates LLM APIs and streams real-time responses through WebSockets for interactive conversations.</p>
+            <div class="project-tags"><span>JAVA</span><span>SPRING AI</span><span>LANGCHAIN4J</span><span>LLMs</span><span>WEBSOCKETS</span><span>RAG</span><span>MCP</span></div>
+            <div class="project-links"><a href="https://github.com/Milan376" target="_blank" rel="noopener noreferrer" class="text-link">GitHub profile ↗</a></div>
+          </div>
+          
+          <div class="project-media ai-media"><div class="ai-orb"></div><div class="ai-grid"></div><div class="ai-label">LLMs / RAG / MCP</div><div class="media-number">04</div><div class="ai-node node-a">PROMPT</div><div class="ai-node node-b">CONTEXT</div><div class="ai-node node-c">RESPONSE</div></div>
+        </article>
       </div>
+    </section>
 
-      <div class="skills-categories reveal-up" style="--delay:0.1s">
-        <!-- Category: Backend -->
-        <div class="skill-category">
-          <div class="skill-cat-header">
-            <div class="skill-cat-icon">⚙️</div>
-            <div class="skill-cat-name">Backend / Core</div>
-          </div>
-          <div class="skills-grid">
-            <div class="skill-pill" data-level="85">Java <span class="skill-level">Advanced</span></div>
-            <div class="skill-pill" data-level="60">JDBC <span class="skill-level">Mid</span></div>
-            <div class="skill-pill" data-level="50">Servlets &amp; JSP <span class="skill-level">Basics</span></div>
-            <div class="skill-pill" data-level="65">MySQL <span class="skill-level">Mid</span></div>
-          </div>
-        </div>
-
-        <!-- Category: Frontend -->
-        <div class="skill-category">
-          <div class="skill-cat-header">
-            <div class="skill-cat-icon">🎨</div>
-            <div class="skill-cat-name">Frontend</div>
-          </div>
-          <div class="skills-grid">
-            <div class="skill-pill">HTML5</div>
-            <div class="skill-pill">CSS3</div>
-            <div class="skill-pill">JavaScript</div>
-            <div class="skill-pill">React <span class="skill-level">Learning</span></div>
-            <div class="skill-pill">Node.js <span class="skill-level">Learning</span></div>
-          </div>
-        </div>
-
-        <!-- Category: Tools -->
-        <div class="skill-category">
-          <div class="skill-cat-header">
-            <div class="skill-cat-icon">🛠️</div>
-            <div class="skill-cat-name">Tools &amp; Concepts</div>
-          </div>
-          <div class="skills-grid">
-            <div class="skill-pill">Git &amp; GitHub</div>
-            <div class="skill-pill">OOP</div>
-            <div class="skill-pill">MVC Architecture</div>
-            <div class="skill-pill">Socket Programming</div>
-            <div class="skill-pill">Multithreading</div>
-            <div class="skill-pill">Data Structures</div>
-          </div>
-        </div>
+    <section class="section section-shell journey-section" id="journey">
+      <div class="section-label">04 — JOURNEY</div>
+      <div class="journey-top"><h2 class="huge-heading">KEEP<br><span>BUILDING.</span></h2><p>My focus is to build reliable software, strengthen fundamentals and learn how to integrate AI in ways that solve real problems.</p></div>
+      <div class="journey-list"><div class="journey-line"></div>
+        <article class="journey-item"><span class="journey-dot"></span><span class="journey-year">01</span><div><h3>Java + DSA</h3><p>Programming fundamentals, object-oriented design, data structures and algorithmic problem solving.</p></div></article>
+        <article class="journey-item"><span class="journey-dot"></span><span class="journey-year">02</span><div><h3>Full Stack Development</h3><p>Responsive React interfaces, REST APIs, Spring Boot services and persistent SQL data.</p></div></article>
+        <article class="journey-item"><span class="journey-dot"></span><span class="journey-year">03</span><div><h3>Concurrent Applications</h3><p>Real-time multi-user communication using TCP sockets, multithreading and WebSockets.</p></div></article>
+        <article class="journey-item"><span class="journey-dot"></span><span class="journey-year">04</span><div><h3>AI Integration — RAG + MCP</h3><p>Exploring LLM-powered workflows using Spring AI, LangChain4j, Retrieval-Augmented Generation and Model Context Protocol.</p></div></article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== PROJECTS ===== -->
-  <section id="projects">
-    <div class="container">
-      <div class="section-heading reveal-up">
-        <div class="section-label">// projects</div>
-        <h2 class="section-title">Things I've built</h2>
-        <div class="section-line"></div>
+    <section class="section-shell resume-section" id="resume">
+      <div class="resume-card"><div><span class="section-label">05 — RESUME</span><h2>WANT THE<br><em>FULL STORY?</em></h2></div>
+        <div class="resume-actions"><a href="resume.pdf" target="_blank" rel="noopener" class="button button-light magnetic"><span>View resume</span><span>↗</span></a><a href="resume.pdf" download class="button button-outline-light magnetic"><span>Download</span><span>↓</span></a></div>
       </div>
+    </section>
 
-      <div class="projects-grid">
-
-        <!-- Project 1: Chat App -->
-        <div class="project-card reveal-up" style="--delay:0.05s">
-          <div class="project-glow"></div>
-          <div class="project-number">01</div>
-          <div class="project-header">
-            <h3 class="project-title">Chat Application</h3>
-            <div class="project-links">
-              <a href="https://github.com/Milan376" target="_blank" class="project-link" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
-            </div>
-          </div>
-          <div class="project-tech">Java · Sockets · Multithreading</div>
-          <p class="project-desc">
-            Real-time multi-client messaging system built on Java Sockets. Handles concurrent connections using thread-per-client model with proper stream management and graceful disconnections.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">Java</span>
-            <span class="project-tag">OOP</span>
-            <span class="project-tag">Networking</span>
-            <span class="project-tag">Threads</span>
-          </div>
-          <div class="project-bar">
-            <div class="project-bar-fill" style="width:70%"></div>
-          </div>
-        </div>
-
-        <!-- Project 2: E-Commerce -->
-        <div class="project-card reveal-up" style="--delay:0.1s">
-          <div class="project-glow"></div>
-          <div class="project-number">02</div>
-          <div class="project-header">
-            <h3 class="project-title">E-Commerce Product Manager</h3>
-            <div class="project-links">
-              <a href="https://github.com/Milan376" target="_blank" class="project-link" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
-            </div>
-          </div>
-          <div class="project-tech">Servlets · JSP · MySQL · JDBC</div>
-          <p class="project-desc">
-            Full product management module with MVC architecture, dynamic listings with pagination, inventory control, server-side validation, and admin notifications. Deployed on Apache Tomcat.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">Java</span>
-            <span class="project-tag">JSP</span>
-            <span class="project-tag">MVC</span>
-            <span class="project-tag">MySQL</span>
-          </div>
-          <div class="project-bar">
-            <div class="project-bar-fill" style="width:85%"></div>
-          </div>
-        </div>
-
-        <!-- Project 3: Bank System -->
-        <div class="project-card reveal-up" style="--delay:0.15s">
-          <div class="project-glow"></div>
-          <div class="project-number">03</div>
-          <div class="project-header">
-            <h3 class="project-title">Banking System CLI</h3>
-            <div class="project-links">
-              <a href="https://github.com/Milan376" target="_blank" class="project-link" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
-            </div>
-          </div>
-          <div class="project-tech">Java · OOP · File I/O · Collections</div>
-          <p class="project-desc">
-            Console-based banking application with account creation, deposit/withdrawal, fund transfers, and transaction history. Implements inheritance hierarchies, encapsulation, and persistent file storage.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">Java</span>
-            <span class="project-tag">OOP</span>
-            <span class="project-tag">File I/O</span>
-            <span class="project-tag">Collections</span>
-          </div>
-          <div class="project-bar">
-            <div class="project-bar-fill" style="width:75%"></div>
-          </div>
-        </div>
-
-        <!-- Project 4: Library System -->
-        <div class="project-card reveal-up" style="--delay:0.2s">
-          <div class="project-glow"></div>
-          <div class="project-number">04</div>
-          <div class="project-header">
-            <h3 class="project-title">Library Management System</h3>
-            <div class="project-links">
-              <a href="https://github.com/Milan376" target="_blank" class="project-link" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
-            </div>
-          </div>
-          <div class="project-tech">Java · MySQL · JDBC · Swing</div>
-          <p class="project-desc">
-            Desktop GUI application for library operations — book catalog management, member registration, borrow/return tracking, fine calculation, and search/filter functionality with a Swing interface.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">Java</span>
-            <span class="project-tag">Swing</span>
-            <span class="project-tag">JDBC</span>
-            <span class="project-tag">MySQL</span>
-          </div>
-          <div class="project-bar">
-            <div class="project-bar-fill" style="width:80%"></div>
-          </div>
-        </div>
-
-        <!-- Project 5: Task Manager API -->
-        <div class="project-card reveal-up" style="--delay:0.25s">
-          <div class="project-glow"></div>
-          <div class="project-number">05</div>
-          <div class="project-header">
-            <h3 class="project-title">Task Manager REST API</h3>
-            <div class="project-links">
-              <a href="https://github.com/Milan376" target="_blank" class="project-link" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
-            </div>
-          </div>
-          <div class="project-tech">Java · Servlets · JSON · MySQL</div>
-          <p class="project-desc">
-            RESTful API for task management supporting CRUD operations, user authentication, priority filtering, and due-date tracking. Returns JSON responses, tested with Postman, backed by MySQL.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">REST</span>
-            <span class="project-tag">JSON</span>
-            <span class="project-tag">Auth</span>
-            <span class="project-tag">Java</span>
-          </div>
-          <div class="project-bar">
-            <div class="project-bar-fill" style="width:65%"></div>
-          </div>
-        </div>
-
-        <!-- Project 6: DSA Visualizer -->
-        <div class="project-card reveal-up" style="--delay:0.3s">
-          <div class="project-glow"></div>
-          <div class="project-number">06</div>
-          <div class="project-header">
-            <h3 class="project-title">DSA Algorithm Visualizer</h3>
-            <div class="project-links">
-              <a href="https://github.com/Milan376" target="_blank" class="project-link" title="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
-            </div>
-          </div>
-          <div class="project-tech">HTML · CSS · JavaScript · Canvas API</div>
-          <p class="project-desc">
-            Browser-based visualizer for sorting and pathfinding algorithms. Supports Bubble Sort, Merge Sort, Quick Sort, and BFS/DFS with step-by-step animation and adjustable speed controls.
-          </p>
-          <div class="project-tags">
-            <span class="project-tag">Algorithms</span>
-            <span class="project-tag">Canvas</span>
-            <span class="project-tag">Visualization</span>
-            <span class="project-tag">JS</span>
-          </div>
-          <div class="project-bar">
-            <div class="project-bar-fill" style="width:60%"></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CONTACT ===== -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-heading reveal-up">
-        <div class="section-label">// contact</div>
-        <h2 class="section-title">Let's connect</h2>
-        <div class="section-line"></div>
-      </div>
-
+    <section class="section section-shell contact-section" id="contact">
+      <div class="section-label">06 — CONTACT</div>
       <div class="contact-layout">
-        <div class="card reveal-up" style="--delay:0.1s">
-          <div class="card-accent-top"></div>
-          <h3 class="card-title">Contact Details</h3>
-          <p class="card-text" style="margin-bottom:1.2rem">
-            Reach out for opportunities, collaborations, or just a good tech conversation.
-          </p>
-          <div class="contact-list">
-            <a href="mailto:chhabramilan25@gmail.com" class="contact-row">
-              <div class="contact-row-icon">✉️</div>
-              <div>
-                <div class="contact-item-label">Email</div>
-                <div class="contact-item-value">chhabramilan25@gmail.com</div>
-              </div>
-            </a>
-            <div class="contact-row">
-              <div class="contact-row-icon">📞</div>
-              <div>
-                <div class="contact-item-label">Phone</div>
-                <div class="contact-item-value">+91 99961 93917</div>
-              </div>
-            </div>
-            <a href="https://github.com/Milan376" target="_blank" class="contact-row">
-              <div class="contact-row-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              </div>
-              <div>
-                <div class="contact-item-label">GitHub</div>
-                <div class="contact-item-value">github.com/Milan376</div>
-              </div>
-            </a>
-            <a href="https://linkedin.com/in/milanchhabra" target="_blank" class="contact-row">
-              <div class="contact-row-icon">💼</div>
-              <div>
-                <div class="contact-item-label">LinkedIn</div>
-                <div class="contact-item-value">linkedin.com/in/milanchhabra</div>
-              </div>
-            </a>
-          </div>
+        <div class="contact-copy"><h2 class="huge-heading">HAVE AN<br><span>IDEA?</span><br>LET'S TALK.</h2><p>For a project, collaboration or Full Stack Java Developer internship opportunity, feel free to reach out.</p>
+          <div class="social-links"><a href="mailto:chhabramilan25@gmail.com">Email ↗</a><a href="https://github.com/Milan376" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://linkedin.com/in/milan-chhabra-0b22b0284" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://leetcode.com/u/milan" target="_blank" rel="noopener noreferrer">LeetCode ↗</a></div>
         </div>
-
-        <!-- Contact form -->
-        <div class="card reveal-up" style="--delay:0.2s">
-          <div class="card-accent-top"></div>
-          <h3 class="card-title">Send a Message</h3>
-          <div class="contact-form" id="contactForm">
-            <div class="form-group">
-              <label for="nameInput">Name</label>
-              <input type="text" id="nameInput" placeholder="Your name" autocomplete="off" />
-            </div>
-            <div class="form-group">
-              <label for="emailInput">Email</label>
-              <input type="email" id="emailInput" placeholder="your@email.com" autocomplete="off" />
-            </div>
-            <div class="form-group">
-              <label for="msgInput">Message</label>
-              <textarea id="msgInput" placeholder="What's on your mind?"></textarea>
-            </div>
-            <button class="btn-primary btn-full" id="sendBtn" onclick="handleContactForm()">
-              <span>Send Message</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-            </button>
-            <div class="form-status" id="formStatus"></div>
-          </div>
-        </div>
+        <form class="contact-form" id="contactForm">
+          <label><span>Your name</span><input type="text" name="name" placeholder="Enter your name" required></label>
+          <label><span>Your email</span><input type="email" name="email" placeholder="you@example.com" required></label>
+          <label><span>Message</span><textarea name="message" rows="5" placeholder="Tell me what you're building..." required></textarea></label>
+          <button type="submit" class="button button-primary"><span>Send message</span><span>↗</span></button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <div class="container footer-inner">
-      <span>© <span id="year"></span> <strong>Milan Chhabra</strong>. All rights reserved.</span>
-      <span class="footer-built">Built with HTML · CSS · JavaScript</span>
-    </div>
-  </footer>
+  <footer class="footer"><div class="section-shell footer-inner">
+    <div class="footer-brand"><span class="brand-mark">M</span><strong>MILAN CHHABRA</strong></div>
+    <div class="footer-stack"><span>JAVA</span><span>SPRING BOOT</span><span>REACT</span><span>RAG + MCP</span></div>
+    <div class="footer-bottom"><span>© <span id="year"></span> Milan Chhabra</span><button id="backToTop" type="button">Back to top ↑</button></div>
+  </div></footer>
 
-  <!-- Scroll to top -->
-  <div class="scroll-top" id="scrollTopBtn">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
-  </div>
-
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
